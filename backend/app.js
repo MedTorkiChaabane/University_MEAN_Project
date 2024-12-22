@@ -13,8 +13,9 @@ const multer = require('multer');
 //importer jsonwebtoken
 const jwt = require("jsonwebtoken");
 //configuration Twilio
-const accountSid = 'AC9d422493a28cc9874f277c74e5f5a7f3';
-const authToken = '1f7df058f444080a00af261278e54ec3';
+require('dotenv').config();
+const accountSid = process.env.TWILIO_ACCOUNT_STRING;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 //importer nodemailer
 const nodemailer = require('nodemailer');
