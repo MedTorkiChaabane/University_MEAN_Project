@@ -1,0 +1,28 @@
+
+    <div class="col">
+      <div class="row d-flex flex-row align-items-end">
+
+        <div class="col-lg-2 order-lg-1 order-2">
+          <div class="event_date d-flex flex-column align-items-center justify-content-center">
+            <div class="event_day">{{eventInput.day}}</div>
+            <div class="event_month">{{eventInput.month}}</div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 order-lg-2 order-3">
+          <div class="event_content">
+            <div class="event_name"><a class="trans_200" href="#">{{eventInput.title}}</a></div>
+            <div class="event_location">{{eventInput.place}}</div>
+            <p>{{eventInput.description}}</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 order-lg-3 order-1">
+          <div class="event_image">
+            <img [src]="eventInput.image" alt="https://unsplash.com/@theunsteady5">
+          </div>
+        </div>
+
+      </div>	
+    </div>
+

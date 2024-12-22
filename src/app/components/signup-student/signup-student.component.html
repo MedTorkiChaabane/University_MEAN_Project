@@ -1,0 +1,114 @@
+<div class="homes">
+  <div class="homes_background_container prlx_parent">
+    <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+  </div>
+  <div class="homes_content">
+    <h1>Signup student</h1>
+  </div>
+</div>
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+  <div class="search_background" style="background-image:url(assets/images/search_background.jpg) "></div>
+  <div class="search_content text-center">
+    <h1 class="search_title mt-5">Signup student</h1>
+    <form [formGroup]="signupForm">
+      <div id="error-msg" class="form-group">
+        <input type="text" class="input_field search_form_name" formControlName="firstName" placeholder="First Name">
+
+        <div *ngIf="signupForm.controls['firstName'].invalid && 
+                 (signupForm.controls['firstName'].touched || 
+                 signupForm.controls['firstName'].dirty) ">
+          <div *ngIf="signupForm.controls['firstName'].errors.required">First Name is required!
+          </div>
+          <div *ngIf="signupForm.controls['firstName'].errors.minlength">First Name must have at least 3chars!</div>
+          <div *ngIf="signupForm.controls['firstName'].errors.pattern">First Name must have only chars!</div>
+        </div>
+      </div>
+      <div id="error-msg" class="form-group">
+        <input type="text" class="input_field search_form_name" formControlName="lastName" placeholder="Last Name">
+
+        <div *ngIf="signupForm.controls['lastName'].invalid && 
+                  (signupForm.controls['lastName'].touched || 
+                  signupForm.controls['lastName'].dirty) ">
+          <div *ngIf="signupForm.controls['lastName'].errors.required">Last Name is required!</div>
+          <div *ngIf="signupForm.controls['lastName'].errors.minlength">Last Name must have at least
+            5chars!</div>
+        </div>
+      </div>
+      <div id="error-msg" class="form-group">
+        <input type="email" class="input_field search_form_name" formControlName="email" placeholder="Email">
+        <div *ngIf="signupForm.controls['email'].invalid && 
+                  (signupForm.controls['email'].touched || 
+                  signupForm.controls['email'].dirty) ">
+          <div *ngIf="signupForm.controls['email'].errors.required">Email is required!</div>
+          <div *ngIf="signupForm.controls['email'].errors.email">Email invalid!</div>
+        </div>
+        <div> {{errorMsgEmail}}</div>
+      </div>
+      <div id="error-msg" class="form-group">
+        <input type="password" class="input_field search_form_name" formControlName="password" placeholder="Password">
+        <div *ngIf="signupForm.controls['password'].invalid && 
+                  (signupForm.controls['password'].touched || 
+                  signupForm.controls['password'].dirty) ">
+          <div *ngIf="signupForm.controls['password'].errors.required">Password is required!</div>
+          <div *ngIf="signupForm.controls['password'].errors.minlength">Password should have at least 6!</div>
+          <div *ngIf="signupForm.controls['password'].errors.maxlength">Password should have at most 12!</div>
+        </div>
+      </div>
+      <div id="error-msg" class="form-group">
+        <input type="password" class="input_field search_form_name" formControlName="confirmPassword"
+          placeholder="Confirm Password">
+      </div>
+      <div id="error-msg" class="form-group">
+        <input type="tel" class="input_field search_form_name" formControlName="tel" placeholder="Tel">
+      <div *ngIf="signupForm.controls['tel'].invalid && 
+                  (signupForm.controls['tel'].touched || 
+                  signupForm.controls['tel'].dirty) ">
+        <div *ngIf="signupForm.controls['tel'].errors.required">Tel is required!</div>
+        <div *ngIf="signupForm.controls['tel'].errors.minlength">Tel should have 8 number!</div>
+        <div *ngIf="signupForm.controls['tel'].errors.maxlength">Tel should have 8 number!</div>
+      </div>
+      <div> {{errorMsgTel}}</div>
+  </div>
+  <div id="error-msg" class="form-group">
+    <input type="text" class="input_field search_form_name" formControlName="address" placeholder="Address">
+
+    <div *ngIf="signupForm.controls['address'].invalid && 
+              (signupForm.controls['address'].touched || 
+              signupForm.controls['address'].dirty) ">
+      <div *ngIf="signupForm.controls['address'].errors.required">Address is required!</div>
+      <div *ngIf="signupForm.controls['address'].errors.minlength">Address must have at least
+        5chars!</div>
+    </div>
+  </div>
+  <div id="error-msg" class="form-group">
+    <select class="input_field search_form_name" formControlName="level">
+      <option value="">-- Please choose a level --</option>
+      <option value="1">Level 1</option>
+      <option value="2">Level 2</option>
+      <option value="3">Level 3</option>
+    </select>
+    <div *ngIf="signupForm.controls['level'].invalid && 
+        (signupForm.controls['level'].touched || 
+        signupForm.controls['level'].dirty) ">
+      <div *ngIf="signupForm.controls['level'].errors.required">Level is required!</div>
+    </div>
+  </div>
+  <!-- Uplaod Image -->
+  <div class="form-group" style="visibility:hidden;">
+    <input type="file" class="input_field search_form_name" #filePicker (change)="onImageSelected($event)">
+  </div>
+  <div class="text-center">
+    <div class="mb-5">
+      <button class="btn btn-success" (click)="filePicker.click()"> Select Your Avatar </button>
+    </div>
+    <img [src]="imagePreview" *ngIf="imagePreview" width="200px" height="200px" alt="">
+  </div>
+
+  <!--  -->
+  <div class="form-group">
+    <input type="submit"class="search_submit_button trans_200" (click)="signupStudent()" value="Signup"
+      [disabled]="signupForm.invalid">
+  </div>
+  </form>
+</div>
+</div>

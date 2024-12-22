@@ -1,0 +1,20 @@
+<table class="table ">
+    <thead>
+       <tr>
+           <th scope="col">id</th>
+           <th scope="col">Subject</th>
+           <th scope="col">Teacher Name</th>
+           <th scope="col">Topic</th>
+          
+      
+    </thead>
+    <tbody >
+   
+        <tr *ngFor="let opinion of opinions">
+            <td>{{opinion._id}}</td>
+            <td>{{opinion.subject | whiteSpace}}</td>
+            <td>{{searchTeacher(opinion.idTeacher)?.firstName}} {{searchTeacher(opinion.idTeacher)?.lastName}}</td>
+            <td>{{searchTeacher(opinion.idTeacher)?.speciality}} </td>
+        </tr>
+    </tbody>
+ </table>

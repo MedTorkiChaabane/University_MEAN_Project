@@ -1,0 +1,40 @@
+
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+    <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+    <div class="search_content text-center">
+        <form  class="search_form mt-5 mb-5" [formGroup]="searchForm">
+            <div id="error-msg" class="form-group">
+                <input class="input_field search_form_name" type="text" formControlName="name" [(ngModel)]="user.name" placeholder="Search User name" (keyup)="searchUsers()" >
+                <div *ngIf="allUsersTab?.length == 0">{{errorMsg}}</div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<table class="table" *ngIf="allUsersTab?.length!=0">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let user of allUsersTab">
+            <td>{{user._id}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.role}}</td>
+            <td>
+                <button class="btn btn-outline-success" (click)="displayUser(user._id)">Display</button>
+                <button class="btn btn-outline-warning" (click)="editUser(user._id)">Edit</button>
+                <button class="btn btn-outline-danger" (click)="deleteUser(user._id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

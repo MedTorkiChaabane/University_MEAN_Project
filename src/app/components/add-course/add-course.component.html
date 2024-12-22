@@ -1,0 +1,78 @@
+<div class="homes">
+    <div class="homes_background_container prlx_parent">
+        <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+    </div>
+    <div class="homes_content">
+        <h1>Add Course</h1>
+    </div>
+</div>
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+    <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+    <div class="search_content text-center">
+        <h1 class="search_title mt-5">Add course</h1>
+        <form  class="search_form mt-5 mb-5" [formGroup]="addCourseForm">
+
+            <div id="error-msg" class="form-group">
+                <input class="input_field search_form_name" type="text" formControlName="name" placeholder="Name">
+                <span *ngIf="addCourseForm.controls['name'].invalid && 
+                    (addCourseForm.controls['name'].touched || 
+                     addCourseForm.controls['name'].dirty) ">
+                    <span *ngIf="addCourseForm.controls['name'].errors.required" style="color:red">Name is required!
+                    </span>
+                    <span
+                        *ngIf="!addCourseForm.controls['name'].errors.pattern && addCourseForm.controls['name'].errors.minlength"
+                        style="color:red">Name must have at
+                        least 3chars!</span>
+                </span>
+            </div>
+
+            <div id="error-msg" class="form-group">
+                <input class="input_field search_form_category" formControlName="description" type="text"
+                    placeholder="Description">
+                <span *ngIf="addCourseForm.controls['description'].invalid && 
+                (addCourseForm.controls['description'].touched || 
+                 addCourseForm.controls['description'].dirty) ">
+                    <span *ngIf="addCourseForm.controls['description'].errors.required" style="color:red">Description is
+                        required!
+                    </span>
+                    <span *ngIf="addCourseForm.controls['description'].errors.minlength" style="color:red">Description
+                        must have at least 6 chars!</span>
+                </span>
+            </div>
+
+            <div id="error-msg" class="form-group">
+                <input class="input_field search_form_category" formControlName="modules" type="number"
+                    placeholder="Modules">
+                <span *ngIf="addCourseForm.controls['modules'].invalid && 
+                (addCourseForm.controls['modules'].touched || 
+                 addCourseForm.controls['modules'].dirty) ">
+                    <span *ngIf="addCourseForm.controls['modules'].errors.required" style="color:red">Modules is
+                        required!
+                    </span>
+                </span>
+            </div>
+            <div id="error-msg" class="form-group">
+                <input class="input_field search_form_category" formControlName="price" type="number"
+                    placeholder="Price">
+                <span *ngIf="addCourseForm.controls['price'].invalid && 
+                (addCourseForm.controls['price'].touched || 
+                 addCourseForm.controls['price'].dirty) ">
+                    <span *ngIf="addCourseForm.controls['price'].errors.required" style="color:red">Price is
+                        required!
+                    </span>
+                </span>
+            </div>
+            <div class="form-group" style="visibility:hidden;">
+                <input type="file" class="input_field search_form_name" #filePicker (change)="onImageSelected($event)">
+              </div>
+              <div class="text-center">
+                <div class="mb-5">
+                  <button class="btn btn-success" (click)="filePicker.click()"> Select course cover </button>
+                </div>
+                <img [src]="imagePreview" *ngIf="imagePreview" width="200px" height="200px" alt="">
+              </div>
+            <button type="button" [disabled]="addCourseForm.invalid" class="search_submit_button trans_200" value="Submit" (click)="addCourse()">Add
+                course</button>
+        </form>
+    </div>
+</div>

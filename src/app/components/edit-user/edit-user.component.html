@@ -1,0 +1,68 @@
+
+<div class="homes">
+    <div class="homes_background_container prlx_parent">
+        <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+    </div>
+    <div class="homes_content">
+        <h1>Edit User</h1>
+    </div>
+</div>
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+    <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+    <div class="search_content text-center">
+        <h1 class="search_title mt-5">Edit User</h1>
+        <form class="search_form mt-5 mb-5" [formGroup]="editUserForm">
+
+            <div id="error-msg" class="form-group">
+                <input class="input_field search_form_name" type="text" [(ngModel)]="user.firstName"
+                    formControlName="firstName" placeholder="First Name">
+                <span *ngIf="editUserForm.controls['firstName'].invalid && 
+                    (editUserForm.controls['firstName'].touched || 
+                     editUserForm.controls['firstName'].dirty) ">
+                    <span *ngIf="editUserForm.controls['firstName'].errors.required">First name is required!
+                    </span>
+                    <span
+                        *ngIf="!editUserForm.controls['firstName'].errors.pattern && editUserForm.controls['firstName'].errors.minlength">First
+                        name must have at
+                        least 3chars!</span>
+                    <span *ngIf="editUserForm.controls['firstName'].errors.pattern">First name must have only
+                        chars!</span>
+                </span>
+            </div>
+
+            <div id="error-msg" class="form-group">
+                <input class="input_field search_form_category" [(ngModel)]="user.lastName" formControlName="lastName"
+                    type="text" placeholder="Last Name">
+                <span *ngIf="editUserForm.controls['lastName'].invalid && 
+                (editUserForm.controls['lastName'].touched || 
+                 editUserForm.controls['lastName'].dirty) ">
+                    <span *ngIf="editUserForm.controls['lastName'].errors.required">Last name is
+                        required!
+                    </span>
+                    <span *ngIf="editUserForm.controls['lastName'].errors.minlength">Last name
+                        must have at least 5 chars!
+                    </span>
+                    <span *ngIf="editUserForm.controls['firstName'].errors.pattern">Last name must have only
+                        chars!
+                    </span>
+                </span>
+            </div>
+
+            <div id="error-msg" class="form-group">
+                <input class="input_field search_form_category" [(ngModel)]="user.email" formControlName="email"
+                    type="email" placeholder="Email">
+                <span *ngIf="editUserForm.controls['email'].invalid && 
+                (editUserForm.controls['email'].touched || 
+                 editUserForm.controls['email'].dirty) ">
+                    <span *ngIf="editUserForm.controls['email'].errors.required">Email is
+                        required!
+                    </span>
+                    <span *ngIf="editUserForm.controls['email'].errors.email">Email invalid!</span>
+                </span>
+            </div>
+            <button type="submit" class="search_submit_button trans_200" value="Submit" (click)="editUser()"
+                [disabled]="editUserForm.invalid">Edit
+                user</button>
+        </form>
+    </div>
+</div>

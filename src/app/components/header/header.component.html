@@ -1,0 +1,89 @@
+<header class="header d-flex flex-row ">
+  <div class="header_content d-flex flex-row  align-items-center " >
+    <!-- Logo -->
+    <div class="logo_container">
+      <div class="logo" style="display:inline-block;">
+        <img src="assets/images/logo.png" alt="">
+        <span>Croco</span>
+      </div>
+      <nav class="main_nav_container " >
+        <div class="main_nav" >
+          <ul class="main_nav_list"  >
+            <li class="main_nav_item"><a routerLink="">Home</a></li>
+           
+            <li  *ngIf="userRole=='Student'" class="main_nav_item">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  STUDENT
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" routerLink="student">Dashboard</a>
+                  <a class="dropdown-item" routerLink="test">Test</a>
+                </div>
+              </div>
+            </li>
+            <li  *ngIf="userRole=='Student'" class="main_nav_item"><a routerLink="searchCourse">
+              Search</a>
+            </li>
+             <li  *ngIf="userRole=='Teacher'" class="main_nav_item">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  TEACHER
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" routerLink="teacher">Dashboard</a>
+                  <a class="dropdown-item" routerLink="addCourse">Add Course</a>
+                  <a class="dropdown-item" routerLink="addQuestion">Add Question</a>
+                </div>
+              </div>
+            </li>
+            <li  *ngIf="userRole=='Parent'" class="main_nav_item">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Parent
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" routerLink="parent">Dashboard</a>
+                </div>
+              </div>
+            </li>
+             <li  *ngIf="userRole=='admin'" class="main_nav_item">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ADMIN
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" routerLink="admin">Dashboard</a>
+                </div>
+              </div>
+            </li>
+             <li  *ngIf="userIsAuthenticated && userRole!='admin' " class="main_nav_item"><a routerLink="editProfile">Hello {{firstName}}!</a></li>
+            <li a *ngIf="!userIsAuthenticated" class="main_nav_item"><a  routerLink="login">Login</a></li> 
+            <li a *ngIf="!userIsAuthenticated" class="main_nav_item"><a  routerLink="signup">Signup </a>
+            <li a *ngIf="userIsAuthenticated" class="main_nav_item"><a  routerLink="login" (click)="logout()">logout</a></li> 
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Main Navigation -->
+  
+  </div>
+  <div class="header_side d-flex flex-row justify-content-center align-items-center">
+    <img src="assets/images/phone-call.svg" alt="">
+    <span>Info: 24 600 900</span>
+  </div>
+
+  <!-- Hamburger -->
+  <div class="hamburger_container">
+    <i class="fas fa-bars trans_200"></i>
+  </div>
+
+</header>
+
+  

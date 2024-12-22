@@ -1,0 +1,55 @@
+<div class="homes">
+    <div class="homes_background_container prlx_parent">
+      <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+    </div>
+    <div class="homes_content">
+      <h1>User informations</h1>
+    </div>
+  </div>
+  <div class="search_section d-flex flex-column align-items-center justify-content-center">
+    <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+    <div class="search_content text-center">
+        <h1 class="search_title mt-5" *ngIf=" user.role=='Student' " >Student informations</h1>
+        <h1 class="search_title mt-5" *ngIf=" user.role=='Teacher' " >Teacher informations</h1>
+        <h1 class="search_title mt-5" *ngIf=" user.role=='Parent' " >Parent informations</h1>
+        <div class="card">
+            <div class="card_img">
+                <div class="card_plus trans_200 text-center"><a href="#">+</a></div>
+                <img class="card-img-top trans_200" [src]="user.img" *ngIf="user.img && user.role=='Student'" alt="https://unsplash.com/@michaeldam">
+                <img class="card-img-top trans_200" src="assets/images/avatar.jpg" *ngIf="user.role=='Parent'" alt="https://unsplash.com/@michaeldam">
+                <iframe [src]='user.cv | safeUrl'  width="100%"  *ngIf=" user.role=='Teacher'" height="500px"></iframe>
+            </div>
+            <div class="card-body text-center">
+                <div class="card-title"><a href="#">{{user.firstName}} {{user.lastName}}</a></div>
+                <div class="card-text">
+                    <div>{{user.email}} </div>
+                    <div>{{user.tel}} </div>
+                    <div *ngIf="user.role=='Student'">Level : {{user.level}} </div>
+                    <div *ngIf="user.role=='Teacher'">{{user.speciality}} </div>
+                </div>
+               
+                <div class="teacher_social">
+                    <ul class="menu_social">
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      
+        <form *ngIf="id && user.role=='Student'"  id="search_form" class="search_form mt-5 mb-5" #affectForm="ngForm" (ngSubmit)="affectStudent()">
+            <div  class="form-group">
+                <label><h3>Select a Teacher</h3></label>
+                <select class="input_field search_form_name" [(ngModel)]="user.idTeacher" name="idTeacher" required>
+                    <option value="" >--Please select a teacher--</option>
+                    <option [value]="t._id" *ngFor="let t of teachers"> {{t.firstName}}  {{t.lastName}}</option>
+                </select>
+            </div>
+  
+            <button  type="submit" class="search_submit_button trans_200" value="Submit" >
+               Affect
+            </button>
+        </form>

@@ -1,0 +1,52 @@
+<div class="homes">
+  <div class="homes_background_container prlx_parent">
+    <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+  </div>
+  <div class="homes_content">
+    <h1>Login</h1>
+  </div>
+</div>
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+  <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+  <div class="search_content text-center">
+    <h1 class="search_title mt-5">Login</h1>
+    <form class="search_form mt-5 mb-5" #loginForm="ngForm" (ngSubmit)="login()">
+      <div id="error-msg" class="form-group">
+        <input class="input_field search_form_name" name="email" type="email"
+          placeholder="Email" [(ngModel)]="user.email" #email="ngModel"
+          [ngClass]="{ 'is-invalid': loginForm.submitted && email.invalid }" email required>
+
+        <span *ngIf="loginForm.submitted && email.invalid" class="invalidfeedback">
+          <span *ngIf="email.errors.email">Email format is invalid </span>
+        </span>
+      </div>
+      <div id="error-msg" class="form-group">
+        <input  class="input_field search_form_name" name="tel"
+          type="number" placeholder="Telephone" [(ngModel)]="user.tel" #tel="ngModel"
+          [ngClass]="{ 'is-invalid': loginForm.submitted && tel.invalid }" pattern="[0-9]{8}" required>
+        <span *ngIf="loginForm.submitted && tel.invalid" class="invalidfeedback">
+          <span *ngIf="tel.errors.pattern">Telephone must have 8 numbers! </span>
+        </span>
+      </div> 
+
+      <div id="error-msg" class="form-group">
+        <input class="input_field search_form_name" name="password" type="password"
+          placeholder="Password" [(ngModel)]="user.password" #password="ngModel"
+          [ngClass]="{ 'is-invalid': loginForm.submitted && password.invalid  }" minlength="6" pattern="[A-z0-9]{6,12}"
+          required>
+        <span *ngIf="loginForm.submitted && password.invalid " class="invalidfeedback">
+          <span *ngIf="password.errors.required">Password is required</span>
+          <span *ngIf="password.errors.minlength">Password should have at least 6 chars! </span>
+          <span *ngIf="password.errors.pattern && !password.errors.minlength">Password should have at most 12 chars!
+          </span>
+        </span>
+        <div *ngIf="!password.invalid || !tel.invalid || !email.invalid">{{errorMsg}} </div>
+
+      </div>
+
+      <button type="submit" class="search_submit_button trans_200" 
+        >LOGIN</button>
+    </form>
+    
+  </div>
+</div>

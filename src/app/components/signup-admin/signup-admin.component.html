@@ -1,0 +1,98 @@
+<div class="homes">
+  <div class="homes_background_container prlx_parent">
+    <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+  </div>
+  <div class="homes_content">
+    <h1>Signup Admin</h1>
+  </div>
+</div>
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+  <div class="search_background" style="background-image:url(assets/images/search_background.jpg) "></div>
+  <div class="search_content text-center">
+    <h1 class="search_title mt-5">Signup</h1>
+    <form  class="search_form mt-5 mb-5" #signupAdminForm="ngForm" (ngSubmit)="signupAdmin()" >
+      
+      <div id="error-msg" class="form-group">
+        <input id="firstName" class="input_field search_form_name" name="firstName"
+          type="text" placeholder="First Name" [(ngModel)]="admin.firstName" #firstName="ngModel"
+          [ngClass]="{ 'is-invalid': signupAdminForm.submitted && firstName.invalid }" minlength="3" pattern="^[a-zA-Z ]*$" required>
+        <span *ngIf="signupAdminForm.submitted && firstName.invalid" class="invalidfeedback">
+          <span *ngIf="firstName.errors.required">First Name is required!</span>
+          <span *ngIf="firstName.errors.pattern">First Name must have only chars!</span>
+          <span *ngIf="firstName.errors.minlength && !firstName.errors.pattern">First Name should have at least 3 chars!</span>
+        </span>
+      </div>
+      
+      <div id="error-msg" class="form-group">
+        <input id="lastName" class="input_field search_form_name" name="lastName"
+          type="text" placeholder="Last Name" [(ngModel)]="admin.lastName" #lastName="ngModel"
+          [ngClass]="{ 'is-invalid': signupAdminForm.submitted && lastName.invalid }" minlength="3" pattern="^[a-zA-Z ]*$" required>
+        <span *ngIf="signupAdminForm.submitted && lastName.invalid" class="invalidfeedback">
+          <span *ngIf="lastName.errors.required">Last Name is required!</span>
+          <span *ngIf="lastName.errors.pattern">Last Name must have only chars!</span>
+          <span *ngIf="lastName.errors.minlength && !lastName.errors.pattern">Last Name should have at least 3 chars!</span>
+        </span>
+      </div>
+      
+      <div id="error-msg" class="form-group">
+        <input  class="input_field search_form_name" name="email"
+          type="email" placeholder="Email" [(ngModel)]="admin.email" #email="ngModel"
+          [ngClass]="{ 'is-invalid': signupAdminForm.submitted && email.invalid }" email required>
+         
+        <span *ngIf="signupAdminForm.submitted && email.invalid" class="invalidfeedback">
+          <span *ngIf="email.errors.required">Email is required!</span>
+          <span *ngIf="email.errors.email">Email format is invalid! </span>
+        </span>
+        <div> {{errorMsgEmail}}</div>
+      </div> 
+      
+      <div id="error-msg" class="form-group">
+        <input  class="input_field search_form_name" name="password"
+          type="password" placeholder="Password" [(ngModel)]="admin.password" #password="ngModel"
+          [ngClass]="{ 'is-invalid': signupAdminForm.submitted && password.invalid }" minlength="6"  pattern="[A-z0-9]{6,12}" required>
+        <span *ngIf="signupAdminForm.submitted && password.invalid" class="invalidfeedback">
+          <span *ngIf="password.errors.required">Password is required! </span>
+          <span *ngIf="password.errors.minlength">Password should have at least 6 chars! </span>
+          <span *ngIf="password.errors.pattern && !password.errors.minlength">Password should have at most 12 chars! </span>
+        </span>
+      </div> 
+      <div id="error-msg" class="form-group">
+        <input  class="input_field search_form_name" name="confirmPassword"
+          type="password" placeholder="Confirm password" [(ngModel)]="admin.confirmPassword" #confirmPassword="ngModel"
+          [ngClass]="{ 'is-invalid': signupAdminForm.submitted && confirmPassword.invalid }" minlength="6"  pattern="[A-z0-9]{6,12}" required>
+        <span *ngIf="signupAdminForm.submitted && confirmPassword.invalid" class="invalidfeedback">
+          <span *ngIf="confirmPassword.errors.required">Password is required! </span>
+          <span *ngIf="confirmPassword.errors.minlength">Password should have at least 6 chars! </span>
+          <span *ngIf="confirmPassword.errors.pattern && !confirmPassword.errors.minlength">Password should have at most 12 chars! </span>
+        </span>
+      </div>
+    
+      <div id="error-msg" class="form-group">
+        <input  class="input_field search_form_name" name="tel"
+          type="number" placeholder="Telephone" [(ngModel)]="admin.tel" #tel="ngModel"
+          [ngClass]="{ 'is-invalid': signupAdminForm.submitted && tel.invalid }" pattern="[0-9]{8}" required>
+        <span *ngIf="signupAdminForm.submitted && tel.invalid" class="invalidfeedback">
+          <span *ngIf="tel.errors.required">Telephone is required!</span>
+          <span *ngIf="tel.errors.pattern">Telephone must have 8 numbers! </span>
+        </span>
+        <div> {{errorMsgTel}}</div>
+      </div> 
+      
+      <div id="error-msg" class="form-group">
+        <input  class="input_field search_form_name" name="address"
+          type="text" placeholder="Address" [(ngModel)]="admin.address" #address="ngModel"
+          [ngClass]="{ 'is-invalid': signupAdminForm.submitted && address.invalid }" minlength="6" pattern="^[A-z0-9 _]*$" required>
+        <span *ngIf="signupAdminForm.submitted && address.invalid" class="invalidfeedback">
+          <span *ngIf="address.errors.required">Address is required!</span>
+          <span *ngIf="address.errors.minlength  && !address.errors.pattern">Address should have at least 6 chars! </span>
+          <span *ngIf="address.errors.pattern">Address should have caracters and numbers! </span>
+        </span>
+      </div> 
+    
+      <button id="search_submit_button" type="submit" class="search_submit_button trans_200"
+        value="Submit" >
+        SIGNUP
+      </button>
+    </form>
+  </div>
+</div>

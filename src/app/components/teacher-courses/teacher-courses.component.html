@@ -1,0 +1,26 @@
+<table class="table ">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Course name</th>
+            <th scope="col">Course description</th>
+            <th scope="col">Course modules</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let course of myCourses">
+            <td>{{course._id}}</td>
+            <td>{{course.name}}</td>
+            <td>{{course.description}}</td>
+            <td>{{course.modules}}</td>
+
+            <td>
+                <button class="btn btn-outline-primary mr-1" (click)="goToDisplay(course._id)">Display</button>
+                <button class="btn btn-outline-warning mr-1" (click)="goToEdit(course._id)">Edit</button>
+                <button class="btn btn-outline-danger" (click)="deleteCourse(course._id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,60 @@
+<div class="homes">
+    <div class="homes_background_container prlx_parent">
+        <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+    </div>
+    <div class="homes_content">
+        <h1>Edit Courses</h1>
+    </div>
+</div>
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+    <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+    <div class="search_content text-center">
+        <h1 class="search_title mt-5">Edit course</h1>
+        <form class="search_form mt-5 mb-5" [formGroup]="editCourseForm">
+
+            <div style="text-align: left; color:red; padding-left: 0;" class="form-group">
+                <input class="input_field search_form_name" type="text" [(ngModel)]="findedCourse.name"  formControlName="name" placeholder="Name">
+                <span *ngIf="editCourseForm.controls['name'].invalid && 
+                    (editCourseForm.controls['name'].touched || 
+                     editCourseForm.controls['name'].dirty) ">
+                    <span *ngIf="editCourseForm.controls['name'].errors.required" style="color:red">Name is required!
+                    </span>
+                    <span
+                        *ngIf="!editCourseForm.controls['name'].errors.pattern && editCourseForm.controls['name'].errors.minlength"
+                        style="color:red">Name must have at
+                        least 3chars!</span>
+                    <span *ngIf="editCourseForm.controls['name'].errors.pattern" style="color:red">Name must have only
+                        chars!</span>
+                </span>
+            </div>
+
+            <div style="text-align: left; color:red; padding-left: 0;" class="form-group">
+                <input class="input_field search_form_category" [(ngModel)]="findedCourse.description" formControlName="description" type="text"
+                    placeholder="Description">
+                <span *ngIf="editCourseForm.controls['description'].invalid && 
+                (editCourseForm.controls['description'].touched || 
+                 editCourseForm.controls['description'].dirty) ">
+                    <span *ngIf="editCourseForm.controls['description'].errors.required" style="color:red">Description is
+                        required!
+                    </span>
+                    <span *ngIf="editCourseForm.controls['description'].errors.minlength" style="color:red">Description
+                        must have at least 6 chars!</span>
+                </span>
+            </div>
+
+            <div style="text-align: left; color:red; padding-left: 0;" class="form-group">
+                <input class="input_field search_form_category" [(ngModel)]="findedCourse.modules" formControlName="modules" type="number"
+                    placeholder="Modules">
+                <span *ngIf="editCourseForm.controls['modules'].invalid && 
+                (editCourseForm.controls['modules'].touched || 
+                 editCourseForm.controls['modules'].dirty) ">
+                    <span *ngIf="editCourseForm.controls['modules'].errors.required" style="color:red">Modules is
+                        required!
+                    </span>
+                </span>
+            </div>
+            <button type="submit" class="search_submit_button trans_200" value="Submit" (click)="editCourse()" [disabled]="editCourseForm.invalid">Edit
+                course</button>
+        </form>
+    </div>
+</div>

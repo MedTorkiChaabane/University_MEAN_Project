@@ -1,0 +1,29 @@
+
+<div class="events page_section">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col">
+          <div class="section_title text-center">
+            <h1>Upcoming Events</h1>
+          </div>
+        </div>
+      </div>
+      
+      <div class="event_items">
+
+        <!-- Event Item -->
+       
+
+        <!-- Event Item -->
+        <div class="row event_item" *ngFor="let event of events">
+         <app-event [eventInput]="event"></app-event>
+        </div>
+
+        <!-- Event Item -->
+       
+
+      </div>
+        
+    </div>
+  </div>

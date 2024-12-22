@@ -1,0 +1,54 @@
+<div class="homes">
+    <div class="homes_background_container prlx_parent">
+        <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+    </div>
+    <div class="homes_content">
+        <h1>Search course</h1>
+    </div>
+</div>
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+    <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+    <div class="search_content text-center">
+        <h1 class="search_title mt-5">Search course</h1>
+        <form  class="search_form mt-5 mb-5" [formGroup]="searchForm">
+
+            <div id="error-msg" class="form-group">
+                <input class="input_field search_form_name" type="text" formControlName="name" [(ngModel)]="course.name" placeholder="Name" (keyup)="searchCourse()" >
+                <span *ngIf="searchForm.controls['name'].invalid && 
+                    (searchForm.controls['name'].touched || 
+                     searchForm.controls['name'].dirty) ">
+                    <span *ngIf="searchForm.controls['name'].errors.required" style="color:red">Please enter course name!
+                    </span>
+                  
+                </span>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+        
+    <div class="popular page_section" *ngIf="course.name">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="section_title text-center">
+                <h1>Popular Courses</h1>
+                <h3 *ngIf="course.name && findedCourses?.length==0" style="color:red"> No finded courses!</h3>
+              </div>
+            </div>
+          </div>
+           
+          <div class="row course_boxes">
+            
+            <!-- Popular Course Item -->
+            <div class="col-lg-4 course_box mb-5" *ngFor="let course of findedCourses">
+             <app-course [courseInput]="course"></app-course>
+            </div>
+    
+          
+    
+          
+          </div>
+        </div>		
+      </div>

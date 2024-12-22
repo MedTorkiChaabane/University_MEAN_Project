@@ -1,0 +1,18 @@
+<div class="card">
+<img class="card-img-top" id="styleCourse" [src]="courseInput.img" *ngIf="courseInput.img" alt="https://unsplash.com/@cikstefan">
+    <div class="card-body text-center">
+        <div class="card-title"><a href="courses.html">{{courseInput.name}}</a></div>
+        <div class="card-text">{{courseInput.description}}</div>
+    </div>
+    <div class="price_box d-flex flex-row align-items-center">
+        <div class="course_author_image">
+            <img id="avatar-style" [src]="courseInput.avatar" *ngIf="courseInput.avatar" alt="https://unsplash.com/@mehdizadeh">
+        </div>
+        <div class="course_author_name">{{courseInput.modules}} Modules<span></span></div>
+        <div class="course_price d-flex flex-column align-items-center justify-content-center">
+        <span>
+        <span [ngClass]="{'priceGreen':courseInput.price>0 && courseInput.price<1000,
+            'priceBlue':courseInput.price>=1000 && courseInput.price<2000,
+            'priceRed':courseInput.price>=2000 }">{{courseInput.price}} DT</span></span></div>
+    </div>
+</div>

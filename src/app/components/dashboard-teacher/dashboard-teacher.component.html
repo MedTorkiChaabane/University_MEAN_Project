@@ -1,0 +1,47 @@
+<div class="homes">
+    <div class="homes_background_container prlx_parent">
+      <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+    </div>
+    <div class="homes_content">
+      <h1>Teacher</h1>
+    </div>
+  </div>
+<div class="container">
+<ul class="nav nav-tabs container" id="myTab" role="tablist" style="padding-top: 3%;" >
+    <li class="main_nav_item">
+      <a  id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Students</a>
+    </li>
+    <li class="main_nav_item">
+      <a  id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Courses</a>
+    </li>
+    <li class="main_nav_item">
+      <a  id="question-tab" data-toggle="tab" href="#question" role="tab" aria-controls="question" aria-selected="false">Questions</a>
+    </li>
+    <li class="main_nav_item">
+      <a  id="result-tab" data-toggle="tab" href="#result" role="tab" aria-controls="result" aria-selected="false">Test results</a>
+    </li>
+  
+  </ul>
+  <div class="tab-content container" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="table-responsive"> 
+       <app-teacher-students></app-teacher-students>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="table-responsive">
+   <app-teacher-courses></app-teacher-courses>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
+      <div class="table-responsive">
+ <app-teacher-questions></app-teacher-questions>
+      </div>
+  </div>
+    <div class="tab-pane fade" id="result" role="tabpanel" aria-labelledby="result-tab">
+      <div class="table-responsive">
+ <app-teacher-results></app-teacher-results>
+      </div>
+  </div>
+  </div>
+</div>

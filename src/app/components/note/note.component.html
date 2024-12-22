@@ -1,0 +1,31 @@
+<div class="homes">
+    <div class="homes_background_container prlx_parent">
+        <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+    </div>
+    <div class="homes_content">
+        <h1>Give Note</h1>
+    </div>
+</div>
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+    <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+    <div class="search_content text-center">
+        <h1 class="search_title mt-5">Give Note</h1>
+        <form id="search_form" class="search_form mt-5 mb-5" [formGroup]="noteForm">
+
+            <div id="error-msg"  class="form-group">
+                <input class="input_field search_form_name" type="number" formControlName="value" placeholder="Value">
+                <span *ngIf="noteForm.controls['value'].invalid && 
+                    (noteForm.controls['value'].touched || 
+                     noteForm.controls['value'].dirty) ">
+                    <span *ngIf="noteForm.controls['value'].errors.required" style="color:red">Value is required!
+                    </span>
+                   
+                </span>
+            </div>
+
+            <button type="submit" class="search_submit_button trans_200" value="Submit" (click)="giveNote()" [disabled]="noteForm.invalid">
+                Validate
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<table class="table ">
+    <thead>
+       <tr>
+           <th scope="col">id</th>
+           <th scope="col">Course Name</th>
+           <th scope="col">Description</th>
+           <th scope="col">Modules</th>
+           <th scope="col">Teacher Name</th>
+           <th scope="col">Topic</th>
+
+      
+    </thead>
+    <tbody >
+   
+        <tr *ngFor="let course of courses">
+            <td>{{course._id}}</td>
+            <td ><b>{{course.name}}</b></td>
+            <td ><b>{{course.description}}</b></td>
+            <td ><b>{{course.modules}}</b></td>
+            <td>{{searchTeacher(course.idTeacher)?.firstName}} {{searchTeacher(course.idTeacher)?.lastName}}</td>           
+            <td>{{searchTeacher(course.idTeacher)?.speciality}} </td>
+            
+            
+        </tr>
+    </tbody>
+ </table>

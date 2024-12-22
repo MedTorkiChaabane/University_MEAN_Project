@@ -1,0 +1,54 @@
+<div class="homes">
+  <div class="homes_background_container prlx_parent">
+      <div class="homes_background prlx" style="background-image:url(assets/images/teachers_background.jpg)"></div>
+  </div>
+  <div class="homes_content">
+      <h1>Test</h1>
+  </div>
+</div>
+<span *ngIf="!passed && connectedUser.status=='Affected'">
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+  <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+  <div class="search_content text-center">
+      <h1 class="search_title mt-5">Test</h1>
+<form class="search_form mt-5 mb-5" id="testForm" >
+ <div *ngFor="let q of quiz " class="mb-2" align="left">
+    <div>{{q.question}}</div>
+    <div>
+      <input type="radio" id={{q._id}} name={{q._id}}  [ngModelOptions]="{standalone: true}"  value={{q.answerOne}} [(ngModel)]="q._id">
+      <label for={{q._id}}>{{q.answerOne}}</label>
+    </div>
+    <div>
+      <input type="radio" id={{q._id}} name={{q._id}} [ngModelOptions]="{standalone: true}" value={{q.answerTwo}} [(ngModel)]="q._id">
+      <label for={{q._id}}>{{q.answerTwo}}</label>
+    </div>
+    <div>
+      <input type="radio" id={{q._id}} name={{q._id}} [ngModelOptions]="{standalone: true}"  value={{q.answerThree}} [(ngModel)]="q._id">
+      <label for={{q._id}}>{{q.answerThree}}</label>
+    </div>
+</div >
+   <button (click)="resultQuiz()" class="search_submit_button trans_200">Validate</button>
+  
+
+</form>
+  </div>
+</div>
+</span>
+<span *ngIf="passed" >
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+  <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+  <div class="search_content text-center">
+     
+<h1 class="search_title mt-5 mb-5" id="error-test"  [ngStyle]="{'color':resultMsg()}">{{msg}}</h1>
+</div>
+</div>
+</span>
+<span *ngIf="connectedUser.status == 'Not affected'" >
+  <div class="search_section d-flex flex-column align-items-center justify-content-center">
+    <div class="search_background" style="background-image:url(assets/images/search_background.jpg);"></div>
+    <div class="search_content text-center">
+       
+  <h1 class="search_title mt-5 mb-5" id="error-test"  >{{msg}}</h1>
+  </div>
+  </div>
+  </span>
