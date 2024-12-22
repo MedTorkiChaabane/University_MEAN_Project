@@ -655,8 +655,8 @@ app.post('/emails/sendEmail', (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'stbchaabane@gmail.com',
-            pass: 'dcjhghmcibmfckoe',
+            user: '',
+            pass: '',
         },
     });
     const mailOptions = {
